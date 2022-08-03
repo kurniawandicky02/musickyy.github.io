@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="song player">
+<meta name="description" content="This is a song player.">
+
+<title>Music Player Kyy :)</title>
+
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/css/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+</head>
+<body onload="onLoad()">
+
+<video id="bg-video" class="bg-video" autoplay muted loop><source></video>
+
+<section class="main-container">
+
+<div class="container">
+    <div class="song-info">
+        <div class="thumbnail-cnt">
+            <img id="thumbnail" class="thumbnail anm-paused" alt="Thumbnail">
+        </div>
+
+        <div class="song-details">
+            <h1 id="song-name" class="song-name">--</h1>
+            <p id="song-makers" class="song-makers">-- | --</p>
+        </div>
+    </div>
+
+    <div class="song-manager">
+        <div class="song-controls">
+            <audio id="song" preload="metadata"></audio>
+
+            <div class="song-time-cnt">
+                <div id="song-current-time" class="song-current-time">--:--</div>
+                <div class="time-slider-cnt">
+                    <input id="time-slider" class="time-slider" type="range" min="0" max="0" value="0" onclick="document.getElementById('song').currentTime = this.value">
+                </div>
+                <div id="song-duration" class="song-duration">--:--</div>
+            </div>
+
+            <div class="song-actions-cnt">
+                <button id="shuffle-repeat-toggler" class="song-actions" onclick="toggleShuffleRepeat()"><i class="bi bi-shuffle"></i></button>
+
+                <button id="prev-song-btn" class="song-actions" onclick="previousSong()"><i class="bi bi-skip-backward-fill"></i></button>
+
+                <button id="play-pause-btn" class="song-actions" onclick="togglePlayPause()"><i class="bi bi-play-fill"></i></i></button>
+
+                <button id="next-song-btn" class="song-actions" onclick="nextSong()"><i class="bi bi-skip-forward-fill"></i></button>
+
+                <button id="songs-list-btn" class="song-actions" onclick="toggleSongsList()"><i class="bi bi-music-note-list"></i></button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="songs-list" class="songs-list">
+    <button class="button-for-song" onclick="changeSong('KEZIA-Aku-Masih-Memikirkanmu-Official-Music-Video_M8zFCByLGIg.mp3','Music Player', 'Kyy :)',0)">
+        <h1 id="song-0">Kezia - Aku Masih Memikirkanmu</h1>
+       Music Player Kyy :) 
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('EVAN-LOSS-FULL-SENYUM-SAYANG-OFFICIAL-MUSIC-VIDEO_g9uLzcCOT20.mp3','Music Player','Kyy :)',1)">
+        <h1 id="song-1">Evan Loss - Full Senyum Sayang</h1>
+        Music Player Kyy :) 
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Gustixa-Happy-ft-Nida-Havia-Lyrics_dC9fDFr2kmY.mp3','Music Player','Kyy :)',2)">
+        <h1 id="song-2">Happy ft Nida Havia- Gustixa</h1>
+        Music Player Kyy :) 
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Joji-Glimpse-of-Us_FvOpPeKSf_4.mp3','Music Player','Kyy :)',3)">
+        <h1 id="song-3">Joji Glimpse Of Us</h1>
+        Music Player Kyy :) 
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Keisya-Levronka-Tak-Ingin-Usai-Official-Music-Video__ZYvZ7XfQU4.mp3','Music Player','Kyy :)',4)">
+        <h1 id="song-4">Keisya Levronka - Tak Ingin Usai</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Rizky-Febian-Seperti-Kisah-Official-Lyric-Video_E7NgR0LEMbI.mp3','Music Player','Kyy :)',5)">
+        <h1 id="song-5">Rizky Febian - Seperti Kisah</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Seventeen-Hal-Terindah-Official-Music-Video_Q6zGaB1f344.mp3','Music Player','Kyy :)',6)">
+        <h1 id="song-6">Seventeen - Hal Terindah</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('MOMONON-SEMANGAT-OKE-Official-Music-Video_k49w4_ZfaWM.mp3','Music Player','Kyy :)',7)">
+        <h1 id="song-7">Momonon - Semangat Oke</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Marshmello-Anne-Marie-FRIENDS-Music-Video-OFFICIAL-FRIENDZONE-ANTHEM_jzD_yyEcp0M.mp3','Music Player','Kyy :)',8)">
+        <h1 id="song-8">Marshmello Anne Marie- Friends</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('MONKEY-BOOTS-Strong-Terus-Official-Music-Video_AVQPnjNG5Ko.mp3','Music Player','Kyy :)',9)">
+        <h1 id="song-9">Monkey Boots - Strong Terus</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Rizky-Febian-Hingga-Tua-Bersama-Official-Music-Video_b5ZQob-mDGM.mp3','Music Player','Kyy :)',10)">
+        <h1 id="song-10">Rizky Febian - Hingga Tua Bersama</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Mike Leite - Summer Vibes.mp3','Music Player','Kyy :)',11)">
+        <h1 id="song-11">Mike Leite - Summer Vibes</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Stephen-Sanchez-Until-I-Found-You-Lyrics_C1WhD-0LtWg.mp3','Music Player','Kyy :)',12)">
+        <h1 id="song-12">Stephen Sanches - Until I Found</h1>
+        Music Player Kyy :)
+    </button>
+    
+    <button class="button-for-song" onclick="changeSong('Rolipso & Shiah Maisel - Good Enough.mp3','Music Player','Kyy :)',13)">
+        <h1 id="song-13">Rolipso & Shiah Maisel - Good Enough</h1>
+        Music Player Kyy :)
+    </button>
+
+    <!-- 
+        Syntax:
+        <button class="button-for-song" onclick="changeSong('SONG_NAME','ARTIST','ALBUM',BUTTON_NUMBER)">
+            <h1 id="song-">SONG_NAME</h1>
+            ARTIST | ALBUM
+        </button>
+
+        -------------------------------------------------------------
+
+        If you want to set thumbnail according to song, then follow syntax given below:
+        <button class="button-for-song" onclick="changeSong('THUMBNAIL_IMAGE_NAME','SONG_NAME','ARTIST','ALBUM',BUTTON_NUMBER)">
+            <h1 id="song-">SONG_NAME</h1>
+            ARTIST | ALBUM
+        </button>
+
+        (THUMBNAIL_IMAGE_NAME -> without extension)
+     -->
+</div>
+
+</section>
+
+<script src="assets/js/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</body>
+</html>
